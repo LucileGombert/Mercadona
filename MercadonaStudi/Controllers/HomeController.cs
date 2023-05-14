@@ -1,6 +1,8 @@
-﻿using MercadonaStudi.Models;
+﻿using MercadonaStudi.Context;
+using MercadonaStudi.Models;
 using MercadonaStudi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace MercadonaStudi.Controllers
@@ -8,15 +10,18 @@ namespace MercadonaStudi.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var data = _context.Products.Include(p => p.Category).Include(p => p.Offer).ToList();
+            return View(data);
         }
 
         public IActionResult Privacy()
