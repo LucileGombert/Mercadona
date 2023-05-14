@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Liste des produits";
+    Layout = "_Layout";
+}
+
+<div class="mt-5 mb-5 d-flex flex-row justify-content-between">
+    <h1>Liste des produits</h1>
+
+    <div>
+        @*<a class="btn btn-outline-success" asp-area="" asp-controller="Product" asp-action="Add">Ajouter un produit</a>*@
+    </div>
+</div>
+
+<div class="tbl-container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Title)</th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Category)</th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Description)</th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Image)</th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Price)</th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Title)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle">@item.Title</td>
+
+                    <td class="align-middle">@item.Category</td>
+
+                    <td class="align-middle">@item.Description</td>
+
+                    <td class="align-middle"><img style="height:60px;width:80px" src="/Uploads/@item.Image" /></td>
+
+                    @if (@item.Price == 0)
+                    {
+                    <td class="align-middle">
+                    <p>@item.Price €</p>
+                    <br>
+                    <p class="fw-bold text-danger">@item.Price €</p>
+                    </td>
+
+                    <td class="align-middle">@item.Price %</td>
+                    } else {
+                    <td class="align-middle"> @item.Price €</td>
+
+                    <td class="align-middle">
+                    <a href="/Product/Edit?id=@item.Id" class="btn btn-default"><img width="30" height="30" src="https://img.icons8.com/ios/50/discount--v1.png" alt="offer" /></a>
+                    </td>
+                    }
+
+                    <td class="align-middle">
+                    <a href="/Product/Edit?id=@item.Id"><i class="bi bi-pencil-square btn btn-outline-warning"></i></a>
+                    <a href="/Product/Delete?id=@item.Id" onclick="return window.confirm('Etes-vous sûr de vouloir supprimer ?')"><i class="bi bi-trash3 btn btn-outline-danger"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="mt-5 d-flex justify-content-start">
+        <a class="btn btn-outline-secondary" asp-area="" asp-controller="Home" asp-action="Index">Retour</a>
+    </div>
+</div>
