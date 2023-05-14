@@ -17,14 +17,14 @@ namespace MercadonaStudi.Controllers
         public IActionResult Index()
         {
             var data = _context.Offers.ToList();
-            return View();
+            return View(data);
         }
 
         // Equivalent Index() en async
-        public async Task<IActionResult> IndexAsync()
-        {
-            var data = await _context.Offers.ToListAsync();
-            return View();
-        }
+        //public async Task<IActionResult> IndexAsync()
+        //{
+        //    var data = await _context.Offers.ToListAsync();
+        //    return View();
+        //}
     }
 }

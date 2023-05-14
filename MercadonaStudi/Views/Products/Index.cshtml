@@ -5,6 +5,57 @@
     Layout = "_Layout";
 }
 
+<div class="container-fluid container-md">
+    <div class="mt-5 mb-5 d-flex flex-row justify-content-between align-items-center">
+        <a asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left-circle" style="font-size: 1.5rem; color: green"></i></a>
+
+        <h1 class="me-auto p-2">Liste des produits</h1>
+
+        <div>
+            <a class="btn btn-outline-success" asp-area="" asp-controller="Products" asp-action="Add">Ajouter un produit</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                        <th>@Html.DisplayNameFor(model => model.Category)</th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+                        <th>@Html.DisplayNameFor(model => model.Image)</th>
+                        <th>@Html.DisplayNameFor(model => model.Price)</th>
+                        <th>@Html.DisplayNameFor(model => model.Offer)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Category)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td class="align-middle"><img class="rounded-circle" src="@item.Image" alt="@item.Title" style="max-width: 50px" /></td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Price)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Offer)</td>
+
+                            <td class="d-flex justify-content-end">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning m-2"><i class="bi bi-pencil-square"></i>Modifier</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return window.confirm('Etes-vous sûr de vouloir supprimer ?')" class="btn btn-outline-danger m-2"><i class="bi bi-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="mt-5 mb-5 d-flex flex-row justify-content-between">
     <h1>Liste des produits</h1>
 

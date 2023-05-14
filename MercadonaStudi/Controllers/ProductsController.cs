@@ -17,7 +17,7 @@ namespace MercadonaStudi.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await _context.Products.ToListAsync();
-            return View();
+            return View(data);
         }
     }
 }

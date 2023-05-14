@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Category>
+﻿@model IEnumerable<Offer>
 
 @{
-    ViewData["Title"] = "Liste des catégories";
+    ViewData["Title"] = "Liste des promotions";
     Layout = "_Layout";
 }
 
@@ -9,10 +9,10 @@
     <div class="mt-5 mb-5 d-flex flex-row justify-content-between align-items-center">
         <a asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left-circle" style="font-size: 1.5rem; color: green"></i></a>
         
-        <h1 class="me-auto p-2">Liste des catégories</h1>
+        <h1 class="me-auto p-2">Liste des promotions</h1>
         
         <div>
-            <a class="btn btn-outline-success" asp-area="" asp-controller="Categories" asp-action="Add">Ajouter une catégorie</a>
+            <a class="btn btn-outline-success" asp-area="" asp-controller="Offers" asp-action="Add">Ajouter une promotion</a>
         </div>
     </div>
 
@@ -21,7 +21,9 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.Label)</th>
+                        <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.Percentage)</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -30,7 +32,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Label)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.StartDate)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.EndDate)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => item.Percentage)</td>
 
                             <td class="d-flex justify-content-end">
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning m-2"><i class="bi bi-pencil-square"></i>Modifier</a>
