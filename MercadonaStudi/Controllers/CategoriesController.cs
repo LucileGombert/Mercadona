@@ -82,6 +82,7 @@ namespace MercadonaStudi.Controllers
 
             return View(data);
         }
+
         // POST: Categories/Delete/2
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
