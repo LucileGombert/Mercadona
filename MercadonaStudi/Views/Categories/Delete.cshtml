@@ -21,9 +21,30 @@
 
             <div class="form-group mt-5 d-flex justify-content-evenly">
                 <a asp-controller="Categories" asp-action="Index" class="btn btn-outline-secondary">Retour</a>
-                <input type="submit" value="Supprimer" class="btn btn-outline-success">
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Supprimer</button>
+            </div>
+
+            @*Boîte de dialogue*@
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModalLabel">Etes-vous sûr de vouloir supprimer la catégorie ?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        </div>
+
+                        <div class="modal-body text-center">
+                            <i class="bi bi-exclamation-triangle" style="font-size: 2rem; color: red;"></i>
+                            <p>En confirmant la suppression, les produits qui appartiennent à cette catégorie seront également supprimés.</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <a asp-controller="Categories" asp-action="Index" class="btn btn-outline-secondary">Fermer</a>
+                            <input type="submit" value="Supprimer" class="btn btn-outline-danger">
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
-        
     </div>
 </div>
