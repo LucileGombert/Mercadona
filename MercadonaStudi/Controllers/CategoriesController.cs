@@ -40,5 +40,33 @@ namespace MercadonaStudi.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        // GET: Categories/Edit/2
+        public IActionResult Edit(int id)
+        {
+            var data = _context.Categories.Find(id);
+
+            if (data == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(data);
+        }
+
+        // POST: Categories/Edit/2
+        [HttpPost]
+        public IActionResult Edit(int id, [Bind("Id, Label")] Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+
+            _context.Categories.Update(category);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

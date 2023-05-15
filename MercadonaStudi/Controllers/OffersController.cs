@@ -50,7 +50,7 @@ namespace MercadonaStudi.Controllers
         }
 
 
-        // GET: Offers/Edit
+        // GET: Offers/Edit/2
         public IActionResult Edit(int id)
         {
             var data = _context.Offers.Find(id);
@@ -63,7 +63,7 @@ namespace MercadonaStudi.Controllers
             return View(data);
         }
 
-        // POST: Offers/Edit
+        // POST: Offers/Edit/2
         [HttpPost]
         public IActionResult Edit(int id, [Bind("Id, StartDate, EndDate, Percentage")] Offer offer)
         {
