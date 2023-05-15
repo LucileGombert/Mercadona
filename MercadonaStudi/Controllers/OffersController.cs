@@ -22,10 +22,12 @@ namespace MercadonaStudi.Controllers
         //    return View();
         //}
 
+        
         // GET: Offers
         public IActionResult Index()
         {
             var data = _context.Offers.ToList();
+
             return View(data);
         }
 

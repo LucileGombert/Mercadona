@@ -19,12 +19,11 @@
             </div>
 
             <div class="form-group p-2">
-                <label asp-for="Category.Label" class="control-label"></label>
-                @*<input asp-for="Category.Label" type="text" class="form-control">*@
-                @*<select asp-for="Category.Label" asp-items="Category.Label" class="form-select">
-                    <option selected>Sélectionner une catégorie</option>
-                </select>*@
-                <span asp-validation-for="Category.Label" class="text-danger"></span>
+                <label asp-for="CategoryId" class="control-label">Catégorie</label>
+                <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                    <option selected class="fw-light text-body-secondary">Sélectionner une catégorie </option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
         
@@ -44,7 +43,7 @@
                 </div>
 
                 <div class="m-3">
-                    <img id="ImagePreview" class="border-info" style="max-width: 150px" />
+                    <img id="ImagePreview" class="border-info" style="max-width: 150px"/>
                 </div>
             </div>
 
@@ -52,6 +51,12 @@
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" type="text" class="form-control">
                 <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group p-2">
+                <label asp-for="OfferId" class="control-label"></label>
+                @*<input asp-for="OfferId" type="text" class="form-control" />*@
+                <select asp-for="OfferId" asp-items="ViewBag.Offers" class="form-select"></select>
             </div>
         </div>
 

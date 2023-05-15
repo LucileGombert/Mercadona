@@ -23,6 +23,14 @@
                 <option asp-for="Category">@item.Category.Label</option>
             }
         </select>
+        @*<div class="form-group p-2">
+            <label asp-for="Category.Label" class="control-label"></label>
+            @*<input asp-for="Category.Label" type="text" class="form-control">
+            <select asp-for="Category.Label" asp-items="Category.Label" class="form-select">
+            <option selected>Sélectionner une catégorie</option>
+            </select>
+            <span asp-validation-for="Category.Label" class="text-danger"></span>
+        </div>*@
     </div>
 </div>
 

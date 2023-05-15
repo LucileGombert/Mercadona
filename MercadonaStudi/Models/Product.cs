@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+using System.ComponentModel;
 
 namespace MercadonaStudi.Models
 {
@@ -30,14 +31,14 @@ namespace MercadonaStudi.Models
         public decimal? Price { get; set; } = decimal.One;
 
         // Relations
-        public int CategoryId { get; set; } = default;
         [ForeignKey("CategoryId")]
+        [Required(ErrorMessage = "Veuillez sélectionner une catégorie")]
+        public int CategoryId { get; set; } = default;
 
         public Category? Category { get; set; }
 
-        
-        public int OfferId { get; set; }
         [ForeignKey("OfferId")]
+        public int OfferId { get; set; }
 
         public Offer? Offer { get; set; }
     }

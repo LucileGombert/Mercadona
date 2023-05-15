@@ -10,10 +10,14 @@ namespace MercadonaStudi.Models
 
         [Required(ErrorMessage = "Date de début requise")]
         [Display(Name = "Date de début")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 
         [Required(ErrorMessage = "Date de fin requise")]
         [Display(Name = "Date de fin")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "Pourcentage de remise requis")]
