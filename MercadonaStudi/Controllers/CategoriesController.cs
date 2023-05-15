@@ -68,5 +68,34 @@ namespace MercadonaStudi.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        // GET: Categories/Delete/2
+        public IActionResult Delete(int id)
+        {
+            var data = _context.Categories.Find(id);
+
+            if (data == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(data);
+        }
+        // POST: Categories/Delete/2
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var data = _context.Categories.Find(id);
+
+            if (data == null)
+            {
+                return View("NotFound");
+            }
+
+            _context.Categories.Remove(data);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
