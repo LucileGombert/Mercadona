@@ -27,16 +27,13 @@
 </div>
 
 
-
-<div class="mt-5 mb-3 row row-cols-1 row-cols-md-4 g-4">
+<div class="mt-5 mb-3 row row-cols-1 row-cols-md-4 g-4 justify-content-center">
     @foreach (var item in Model)
     {
         <div class="col">
             <div class="card">
-                <div class="card-img-top">
-                    <img src="@item.Image" width="128" height="128">
-                </div>
-
+                <img src="@item.Image" class="card-img-top" width="128" height="128">
+              
                 <div class="card-body">
                     <h4>@item.Title</h4>
                     <p class="badge bg-primary">@item.Category.Label</p>

@@ -14,11 +14,13 @@ namespace MercadonaStudi.Controllers
             _context = context;
         }
 
+        // GET: Categories
         public IActionResult Index()
         {
             var data = _context.Categories.ToList();
             return View(data);
         }
+
 
         // GET: Categories/Create
         public IActionResult Create()
