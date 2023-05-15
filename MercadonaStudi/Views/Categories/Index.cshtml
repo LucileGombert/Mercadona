@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Category>
 
 @{
-    ViewData["Title"] = "Liste des catégories";
+    ViewData["Title"] = "Catégories";
     Layout = "_Layout";
 }
 
@@ -9,10 +9,10 @@
     <div class="mt-5 mb-5 d-flex flex-row justify-content-between align-items-center">
         <a asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left-circle" style="font-size: 1.5rem; color: green"></i></a>
         
-        <h1 class="me-auto p-2">Liste des catégories</h1>
+        <h1 class="me-auto p-2">Catégories</h1>
         
         <div>
-            <a class="btn btn-outline-success" asp-area="" asp-controller="Categories" asp-action="Add">Ajouter une catégorie</a>
+            <a class="btn btn-outline-success" asp-area="" asp-controller="Categories" asp-action="Create">Ajouter une catégorie</a>
         </div>
     </div>
 

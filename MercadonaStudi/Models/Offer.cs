@@ -17,7 +17,7 @@ namespace MercadonaStudi.Models
         public DateTime EndDate { get; set; }
 
         [Required(ErrorMessage = "Pourcentage de remise requis")]
-        [Display(Name = "Pourcentage de remise")]
+        [Display(Name = "Promotion")]
         [Range(0, 100)]
         [Column(TypeName = "decimal(3,0)")]
         public decimal? Percentage { get; set; } = 0;

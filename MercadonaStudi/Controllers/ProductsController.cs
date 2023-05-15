@@ -1,4 +1,5 @@
 ﻿using MercadonaStudi.Context;
+using MercadonaStudi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,10 +15,31 @@ namespace MercadonaStudi.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        // GET: Products
+        public IActionResult Index()
         {
-            var data = await _context.Products.ToListAsync();
+            var data = _context.Products.Include(p => p.Category).Include(p => p.Offer).ToList();
             return View(data);
+        }
+
+
+        // GET: Products/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Products/Create
+        [HttpPost]
+        public IActionResult Create([Bind("Title, Description, Image, Price")] Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(product);
+            }
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

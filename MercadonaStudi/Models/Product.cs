@@ -30,7 +30,7 @@ namespace MercadonaStudi.Models
         public decimal? Price { get; set; } = decimal.One;
 
         // Relations
-        public int CategoryId { get; set; }
+        public int CategoryId { get; set; } = default;
         [ForeignKey("CategoryId")]
 
         public Category? Category { get; set; }

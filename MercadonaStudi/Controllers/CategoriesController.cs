@@ -1,4 +1,5 @@
 ﻿using MercadonaStudi.Context;
+using MercadonaStudi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MercadonaStudi.Controllers
@@ -17,6 +18,25 @@ namespace MercadonaStudi.Controllers
         {
             var data = _context.Categories.ToList();
             return View(data);
+        }
+
+        // GET: Categories/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Categories/Create
+        [HttpPost]
+        public IActionResult Create([Bind("Label")] Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

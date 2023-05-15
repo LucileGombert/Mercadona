@@ -8,7 +8,7 @@ namespace MercadonaStudi.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Libellé requis")]
-        [Display(Name = "Libellé")]
+        [Display(Name = "Catégorie")]
         public string? Label { get; set; }
 
         // Relations
