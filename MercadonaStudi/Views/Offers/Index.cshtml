@@ -35,17 +35,16 @@
                             <td class="align-middle">@Html.DisplayFor(modelItem => item.StartDate)</td>
                             <td class="align-middle">@Html.DisplayFor(modelItem => item.EndDate)</td>
                             <td class="align-middle">@Html.DisplayFor(modelItem => item.Percentage) %</td>
-                            @if (item.Percentage != 0)
-                            {
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning m-1"><i class="bi bi-pencil-square"></i> Modifier</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger m-1"><i class="bi bi-trash"></i> Supprimer</a>
-                                </td>
-                            } else {
-                                <td class="border-bottom">
-                                    
-                                </td>
-                            }
+                            
+                            <td class="d-flex justify-content-end">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning m-2"><i class="bi bi-pencil-square"></i> Modifier</a>
+                                @if (item.Percentage == 0)
+                                {
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-secondary m-2 disabled"><i class="bi bi-trash"></i> Supprimer</a>
+                                } else {
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger m-2"><i class="bi bi-trash"></i> Supprimer</a>
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>

@@ -26,10 +26,6 @@ namespace MercadonaStudi.Context
                         new Category()
                         {
                             Label = "Légumes"
-                        },
-                        new Category()
-                        {
-                            Label = "Produits frais"
                         }
                     });
                     context.SaveChanges();
@@ -44,17 +40,11 @@ namespace MercadonaStudi.Context
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(10),
                             Percentage = 0
-                        },
-                        new Offer()
-                        {
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(10),
-                            Percentage = 50
                         }
                     });
                     context.SaveChanges();
                 }
-                
+
                 if (!context.Products.Any())
                 {
                     context.Products.AddRange(new List<Product>()
@@ -63,28 +53,31 @@ namespace MercadonaStudi.Context
                         {
                             Title = "Tomates",
                             Description = "Tomates origine France",
-                            Image = "https://www.pexels.com/fr-fr/photo/gros-plan-de-tomates-sur-table-bois-257794/",
+                            Image = "https://images.pexels.com/photos/257794/pexels-photo-257794.jpeg",
                             Price = 3,
-                            CategoryId = 2,
+                            DiscountedPrice = 0,
+                            CategoryId = 1,
                             OfferId = 1,
                         },
                         new Product()
                         {
                             Title = "Pommes",
                             Description = "Pommes origine France",
-                            Image = "https://www.pexels.com/fr-fr/photo/tas-de-pommes-rouges-2966150/",
+                            Image = "https://images.pexels.com/photos/2966150/pexels-photo-2966150.jpeg",
                             Price = 5,
+                            DiscountedPrice = 0,
                             CategoryId = 1,
-                            OfferId = 2,
+                            OfferId = 1,
                         },
                         new Product()
                         {
                             Title = "Radis",
                             Description = "Radis origine Espagne",
-                            Image = "https://www.pexels.com/fr-fr/photo/nourriture-sain-legumes-recolte-3987392/",
+                            Image = "https://images.pexels.com/photos/1257078/pexels-photo-1257078.jpeg",
                             Price = 2,
+                            DiscountedPrice = 0,
                             CategoryId = 2,
-                            OfferId = 2,
+                            OfferId = 1,
                         }
                     });
                     context.SaveChanges();

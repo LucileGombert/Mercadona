@@ -1,0 +1,100 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Supprimer le produit";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid container-md">
+    <h1 class="pb-10">Supprimer le produit</h1>
+
+    <div class ="mt-5 col-md-10 offset-md-1">
+        <div class="d-flex">
+            <div class="form-group p-2 flex-grow-1">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" type="text" class="form-control">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group p-2">
+                <label asp-for="CategoryId" class="control-label">Catégorie</label>
+                <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                    <option selected class="fw-light text-body-secondary">Sélectionner une catégorie </option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group p-2">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" type="text" class="form-control">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group p-2 flex-grow-1 d-flex flex-column">
+                <div>
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" type="text" class="form-control">
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+
+                <div class="m-3">
+                    <img id="ImagePreview" class="border-info" style="max-width: 150px" />
+                </div>
+            </div>
+
+            <div class="form-group p-2">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" type="text" class="form-control">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group p-2">
+                <label asp-for="DiscountedPrice" class="control-label"></label>
+                <input asp-for="DiscountedPrice" type="text" class="form-control">
+                <span asp-validation-for="DiscountedPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group p-2">
+                <label asp-for="OfferId" class="control-label"></label>
+                @*<input asp-for="OfferId" type="text" class="form-control" />*@
+                <select asp-for="OfferId" asp-items="ViewBag.Offers" class="form-select"></select>
+            </div>
+        </div>
+
+        
+        <form asp-action="Delete" method="post" >
+            <input type="hidden" asp-for="Id"/>
+
+            <div class="form-group mt-5 d-flex justify-content-evenly">
+                <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary">Retour</a>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Supprimer</button>
+            </div>
+
+            @*Boîte de dialogue*@
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <i class="bi bi-exclamation-triangle" style="font-size: 2rem; color: red;"></i>
+                            <h1 class="modal-title fs-5 ms-2" id="deleteModalLabel">Attention !</h1>
+
+                            <button type="button" data-bs-dismiss="modal" aria-label="Fermer" class="btn-close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <p>Etes-vous sûr de vouloir supprimer le produit ?</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <a asp-controller="Products" asp-action="Index" data-bs-dismiss="modal" aria-label="Fermer" class="btn btn-outline-secondary">Fermer</a>
+                            <input type="submit" value="Supprimer" class="btn btn-outline-danger">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

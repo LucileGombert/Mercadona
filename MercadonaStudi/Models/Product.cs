@@ -30,14 +30,22 @@ namespace MercadonaStudi.Models
         [DataType(DataType.Currency)]
         public decimal? Price { get; set; } = decimal.One;
 
+        [Display(Name = "Prix remisé")]
+        [Column(TypeName = "decimal(4,2)")]
+        [DataType(DataType.Currency)]
+        public decimal? DiscountedPrice { get; set; } = 0;
+
+
         // Relations
         [ForeignKey("CategoryId")]
         [Required(ErrorMessage = "Veuillez sélectionner une catégorie")]
+        [Display(Name = "Catégorie")]
         public int CategoryId { get; set; } = default;
 
         public Category? Category { get; set; }
 
         [ForeignKey("OfferId")]
+        [Display(Name = "Promotion")]
         public int OfferId { get; set; }
 
         public Offer? Offer { get; set; }

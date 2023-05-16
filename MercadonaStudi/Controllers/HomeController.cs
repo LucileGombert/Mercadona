@@ -21,6 +21,17 @@ namespace MercadonaStudi.Controllers
         public IActionResult Index()
         {
             var data = _context.Products.Include(p => p.Category).Include(p => p.Offer).ToList();
+
+            //foreach (var item in data)
+            //{
+            //    if (item.OfferId != 1)
+            //    {
+            //        item.DiscountedPrice = item.Price - (item.Price * (item.Offer.Percentage / 100));
+            //    }
+            //}
+
+           
+
             return View(data);
         }
 
