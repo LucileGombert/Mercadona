@@ -5,23 +5,18 @@ namespace MercadonaStudi.ViewModels
     public class RegistrationViewModel
     {
         [Required]
-        public string Name { get; set; }
+        public string FullName { get; set; }
 
         [Required]
-        [EmailAddress]
         public string Email { get; set; }
 
-        public string Username { get; set; }
-
         [Required]
-        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*[#$^+=!*()@%&]).{6,}$", ErrorMessage = "Le mot de passe doit contenir 6 caractères minimum 1 majuscule, 1 minuscule, un caractère spécial et un chiffre")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
-        [Compare("Password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Le mot de passe ne correspond pas")]
         public string PasswordConfirm { get; set; }
-
-        public string Role { get; set; }
     }
-    
 }

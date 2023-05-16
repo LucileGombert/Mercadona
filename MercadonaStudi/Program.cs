@@ -1,15 +1,13 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using MercadonaStudi.Context;
-using MercadonaStudi.Services;
-using Mercadona.Repositories.Services;
-using MercadonaStudi.Models;
 using Microsoft.AspNetCore.Identity;
+using MercadonaStudi.Context;
+using MercadonaStudi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Services
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IUsersService, UsersService>();
 
 // Context
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -19,6 +17,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+builder.Services.AddAuthentication(options =>
+ {
+     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+ });
 var app = builder.Build();
 
 // HTTP request pipeline.
@@ -33,6 +35,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

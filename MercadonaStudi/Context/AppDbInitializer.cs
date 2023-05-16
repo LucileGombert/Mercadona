@@ -1,15 +1,12 @@
-﻿using Mercadona.Repositories.Services;
+﻿using Microsoft.AspNetCore.Identity;
 using MercadonaStudi.Models;
-using MercadonaStudi.Services;
-using MercadonaStudi.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using System.Data;
+
 
 namespace MercadonaStudi.Context
 {
     public class AppDbInitializer
     {
-        #region public static void Seed() : Ajoute des catégories, promotions et produits dans la bdd s'il n'en existe pas
+        #region Seed() : Ajoute des catégories, promotions et produits dans la bdd s'il n'en existe pas au lancement de l'application
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
@@ -88,35 +85,37 @@ namespace MercadonaStudi.Context
         }
         #endregion
 
+
+        #region SeedUsersAndRolesAsync() : Ajoute un utilisateur admin au lancement de l'application s'il n'existe pas
         public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
-                //Roles
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-                if (!await roleManager.RoleExistsAsync("admin"))
-                    await roleManager.CreateAsync(new IdentityRole("admin"));
+                if (!await roleManager.RoleExistsAsync("Admin"))
+                    await roleManager.CreateAsync(new IdentityRole("Admin"));
 
-                //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                string adminUserEmail = "admin@gmail.com";
 
-                var adminUser = await userManager.FindByNameAsync("admin");
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
                     var newAdminUser = new ApplicationUser()
                     {
-                        Name = "admin",
-                        FullName = "Admin User",
+
+                        Name = "Admin User",
                         UserName = "admin",
-                        Email = "admin@gmail.com",
+                        Email = adminUserEmail,
                         EmailConfirmed = true,
                     };
                     await userManager.CreateAsync(newAdminUser, "Admin@123");
-                    await userManager.AddToRoleAsync(newAdminUser, "admin");
+                    await userManager.AddToRoleAsync(newAdminUser, "Admin");
                 }
             }
         }
+        #endregion
 
     }
 }

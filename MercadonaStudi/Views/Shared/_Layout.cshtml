@@ -30,31 +30,28 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Catalogue</a>
+                                <i class="bi bi-book"></i> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Catalogue</a>
                             </li>
-                            
-                            @*@if (!string.IsNullOrEmpty(username))*@
-                            
-                            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                             {
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Espace administrateur</a>
+                                <i class="bi bi-gear"></i> <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Espace administrateur</a>
 
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="Categories" asp-action="Index">Catégories</a></li>
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="Offers" asp-action="Index">Promotions</a></li>
+                                    
+                                    
+                                        <li><i class="bi bi-folder2-open"></i><a class="dropdown-item" asp-area="" asp-controller="Categories" asp-action="Index">Catégories</a></li>
+                                        <li><i class="bi bi-percent"></i> <a class="dropdown-item" asp-area="" asp-controller="Offers" asp-action="Index">Promotions</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="Products" asp-action="Index">Produits</a></li>
                                     </ul>
                                 </li>
 
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Déconnexion</a></li>
+                                <li class="nav-item"><i class="bi bi-door-open"></i><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">Déconnexion</a></li>
                             }
-
-                        @*@if (string.IsNullOrEmpty(username))*@
                         else
                         {
                             <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Connexion</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Register">Register</a></li>
                         }
                         </ul>
                     </div>
@@ -68,11 +65,19 @@
             </main>
         </div>
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2023 - MercadonaStudi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <p>&copy; 2023 - Mercadona - <a href="~/files/GuideAdmin.pdf" target="_blank">Guide d'utilisation administrateur</a></p>
+
+            }
+            else
+            {
+                <p>&copy; 2023 - Mercadona - <a href="~/files/Guide.pdf" target="_blank">Guide d'utilisation</a></p>
+            }
+        </div>
+    </footer>
 
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

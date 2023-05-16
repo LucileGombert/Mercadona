@@ -2,9 +2,9 @@
 
 namespace MercadonaStudi.ViewModels
 {
-    public class NewProductSelectionsViewModel
+    public class SelectedItemsViewModel
     {
-        public NewProductSelectionsViewModel()
+        public SelectedItemsViewModel()
         {
             Categories = new List<Category>();
             Offers = new List<Offer>();

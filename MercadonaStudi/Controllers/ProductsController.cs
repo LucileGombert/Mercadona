@@ -32,7 +32,7 @@ namespace MercadonaStudi.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            var selectionData = new NewProductSelectionsViewModel()
+            var selectionData = new SelectedItemsViewModel()
             {
                 Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
                 Offers = _context.Offers.OrderBy(n => n.Percentage).ToList()
@@ -50,7 +50,7 @@ namespace MercadonaStudi.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var selectionData = new NewProductSelectionsViewModel()
+                var selectionData = new SelectedItemsViewModel()
                 {
                     Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
                     Offers = _context.Offers.OrderBy(n => n.Percentage).ToList()
@@ -79,7 +79,7 @@ namespace MercadonaStudi.Controllers
                 return View("NotFound");
             }
 
-            var selectionData = new NewProductSelectionsViewModel()
+            var selectionData = new SelectedItemsViewModel()
             {
                 Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
                 Offers = _context.Offers.OrderBy(n => n.Percentage).ToList()
@@ -97,7 +97,7 @@ namespace MercadonaStudi.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var selectionData = new NewProductSelectionsViewModel()
+                var selectionData = new SelectedItemsViewModel()
                 {
                     Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
                     Offers = _context.Offers.OrderBy(n => n.Percentage).ToList()
