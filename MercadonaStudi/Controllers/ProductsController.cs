@@ -151,10 +151,10 @@ namespace MercadonaStudi.Controllers
         // POST: Products/Edit/2
         [HttpPost]
         public IActionResult Edit([Bind("Id, Title, CategoryId, Description, Image, Price, DiscountedPrice, OfferId")] Product product)
-        //public IActionResult Edit(int id, ProductViewModel productUpdated)
+        //public IActionResult Edit(int id, Product product)
         {
             //if (id != productUpdated.Id) return View("NotFound");
-
+            //var percentage = _context.Offers.FirstOrDefault(p => p.Id == id);
             if (!ModelState.IsValid)
             {
                 var selectionData = new NewProductSelectionsViewModel()
@@ -168,10 +168,11 @@ namespace MercadonaStudi.Controllers
 
                 return View(product);
             }
-            
-            if (product.Offer.Percentage != 0)
+            var data = _context.Offers.Find(product.OfferId);
+
+            if (product.OfferId != 1)
             {
-                var productUpdated = new Product()
+                productUpdated = new Product()
                 {
                     Id = product.Id,
                     Title = product.Title,
@@ -179,13 +180,13 @@ namespace MercadonaStudi.Controllers
                     Description = product.Description,
                     Image = product.Image,
                     Price = product.Price,
-                    DiscountedPrice = product.Price - (product.Price * (product.Offer.Percentage / 100)),
+                    DiscountedPrice = product.Price - (product.Price * (data.Percentage / 100)),
                     OfferId = product.OfferId,
                 };
             }
             else
             {
-                var productUpdated = new Product()
+                productUpdated = new Product()
                 {
                     Id = product.Id,
                     Title = product.Title,
