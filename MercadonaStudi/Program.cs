@@ -1,18 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using MercadonaStudi.Context;
+using MercadonaStudi.Services;
+using Mercadona.Repositories.Services;
+using MercadonaStudi.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Services
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
 // Context
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Identity  
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -32,6 +41,6 @@ app.MapControllerRoute(
 
 //Seed database
 AppDbInitializer.Seed(app);
-//AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 
 app.Run();

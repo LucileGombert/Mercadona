@@ -1,20 +1,22 @@
-﻿using MercadonaStudi.Models;
+﻿using Mercadona.Repositories.Services;
+using MercadonaStudi.Models;
+using MercadonaStudi.Services;
+using MercadonaStudi.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using System.Data;
 
 namespace MercadonaStudi.Context
 {
     public class AppDbInitializer
     {
+        #region public static void Seed() : Ajoute des catégories, promotions et produits dans la bdd s'il n'en existe pas
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-
                 context.Database.EnsureCreated();
 
-
-                // Ajoute des enregistrements dans la bdd s'il n'en existe pas
                 if (!context.Categories.Any())
                 {
                     context.Categories.AddRange(new List<Category>()
@@ -84,55 +86,37 @@ namespace MercadonaStudi.Context
                 }
             }
         }
+        #endregion
 
-        //public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
-        //{
-        //    using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
-        //    {
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        //        //Roles
-        //        var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                if (!await roleManager.RoleExistsAsync("admin"))
+                    await roleManager.CreateAsync(new IdentityRole("admin"));
 
-        //        if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-        //            await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-        //        if (!await roleManager.RoleExistsAsync(UserRoles.User))
-        //            await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                //Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-        //        //Users
-        //        var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-        //        string adminUserEmail = "admin@etickets.com";
+                var adminUser = await userManager.FindByNameAsync("admin");
+                if (adminUser == null)
+                {
+                    var newAdminUser = new ApplicationUser()
+                    {
+                        Name = "admin",
+                        FullName = "Admin User",
+                        UserName = "admin",
+                        Email = "admin@gmail.com",
+                        EmailConfirmed = true,
+                    };
+                    await userManager.CreateAsync(newAdminUser, "Admin@123");
+                    await userManager.AddToRoleAsync(newAdminUser, "admin");
+                }
+            }
+        }
 
-        //        var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
-        //        if (adminUser == null)
-        //        {
-        //            var newAdminUser = new ApplicationUser()
-        //            {
-        //                FullName = "Admin User",
-        //                UserName = "admin-user",
-        //                Email = adminUserEmail,
-        //                EmailConfirmed = true
-        //            };
-        //            await userManager.CreateAsync(newAdminUser, "Coding@1234?");
-        //            await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
-        //        }
-
-
-        //        string appUserEmail = "user@etickets.com";
-
-        //        var appUser = await userManager.FindByEmailAsync(appUserEmail);
-        //        if (appUser == null)
-        //        {
-        //            var newAppUser = new ApplicationUser()
-        //            {
-        //                FullName = "Application User",
-        //                UserName = "app-user",
-        //                Email = appUserEmail,
-        //                EmailConfirmed = true
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "Coding@1234?");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
-        //    }
-        //}
     }
 }
