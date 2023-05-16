@@ -49,7 +49,11 @@ namespace MercadonaStudi.Controllers
             TempData["Error"] = "Une erreur s'est produite";
             return View(loginViewModel);
         }
-        
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Logout()
         {
