@@ -4,10 +4,10 @@ namespace MercadonaStudi.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email requis")]
         public string? Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mot de passe requis")]
         public string? Password { get; set; }
     }
 }

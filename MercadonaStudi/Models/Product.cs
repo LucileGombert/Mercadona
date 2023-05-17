@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
-using System.ComponentModel;
 
 namespace MercadonaStudi.Models
 {
@@ -20,9 +18,7 @@ namespace MercadonaStudi.Models
 
         [Required(ErrorMessage = "Image requise")]
         public string? Image { get; set; }
-
-        [NotMapped]
-        public IFormFile? ImageFile { get; set; }
+      
 
         [Required(ErrorMessage = "Prix requis")]
         [Display(Name = "Prix")]
@@ -40,7 +36,7 @@ namespace MercadonaStudi.Models
         [ForeignKey("CategoryId")]
         [Required(ErrorMessage = "Veuillez sélectionner une catégorie")]
         [Display(Name = "Catégorie")]
-        public int CategoryId { get; set; } = default;
+        public int CategoryId { get; set; }
 
         public Category? Category { get; set; }
 

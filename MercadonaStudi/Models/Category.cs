@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace MercadonaStudi.Models
 {
@@ -10,6 +9,7 @@ namespace MercadonaStudi.Models
         [Required(ErrorMessage = "Libellé requis")]
         [Display(Name = "Catégorie")]
         public string? Label { get; set; }
+
 
         // Relations
         public List<Product>? Products { get; set; }

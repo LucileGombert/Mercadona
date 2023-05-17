@@ -8,18 +8,23 @@ namespace MercadonaStudi.Controllers
     {
         private readonly AppDbContext _context;
 
+
         // Constructeur
         public CategoriesController(AppDbContext context)
         {
             _context = context;
         }
 
+
+
         // GET: Categories
         public IActionResult Index()
         {
-            var data = _context.Categories.ToList();
-            return View(data);
+            var categoryList = _context.Categories.ToList();
+
+            return View(categoryList);
         }
+
 
 
         // GET: Categories/Create
@@ -30,72 +35,78 @@ namespace MercadonaStudi.Controllers
 
         // POST: Categories/Create
         [HttpPost]
-        public IActionResult Create([Bind("Label")] Category category)
+        public IActionResult Create([Bind("Label")] Category categoryToCreate)
         {
             if (!ModelState.IsValid)
             {
-                return View(category);
+                return View(categoryToCreate);
             }
-            _context.Categories.Add(category);
+
+            _context.Categories.Add(categoryToCreate);
             _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
 
 
         // GET: Categories/Edit/2
         public IActionResult Edit(int id)
         {
-            var data = _context.Categories.Find(id);
+            var categoryToUpdate = _context.Categories.Find(id);
 
-            if (data == null)
+            if (categoryToUpdate == null)
             {
                 return View("NotFound");
             }
 
-            return View(data);
+            return View(categoryToUpdate);
         }
 
         // POST: Categories/Edit/2
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("Id, Label")] Category category)
+        public IActionResult Edit([Bind("Id, Label")] Category categoryToUpdate)
         {
             if (!ModelState.IsValid)
             {
-                return View(category);
+                return View(categoryToUpdate);
             }
 
-            _context.Categories.Update(category);
+            _context.Categories.Update(categoryToUpdate);
             _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
 
 
         // GET: Categories/Delete/2
         public IActionResult Delete(int id)
         {
-            var data = _context.Categories.Find(id);
+            var categoryToDelete = _context.Categories.Find(id);
 
-            if (data == null)
+            if (categoryToDelete == null)
             {
                 return View("NotFound");
             }
 
-            return View(data);
+            return View(categoryToDelete);
         }
 
         // POST: Categories/Delete/2
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var data = _context.Categories.Find(id);
+            var categoryToDelete = _context.Categories.Find(id);
 
-            if (data == null)
+            if (categoryToDelete == null)
             {
                 return View("NotFound");
             }
 
-            _context.Categories.Remove(data);
+            _context.Categories.Remove(categoryToDelete);
             _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }

@@ -104,7 +104,6 @@ namespace MercadonaStudi.Context
                 {
                     var newAdminUser = new ApplicationUser()
                     {
-
                         Name = "Admin User",
                         UserName = "admin",
                         Email = adminUserEmail,
@@ -116,6 +115,5 @@ namespace MercadonaStudi.Context
             }
         }
         #endregion
-
     }
 }

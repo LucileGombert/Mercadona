@@ -1,7 +1,6 @@
-﻿using MercadonaStudi.Context;
+﻿using Microsoft.AspNetCore.Mvc;
+using MercadonaStudi.Context;
 using MercadonaStudi.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MercadonaStudi.Controllers
 {
@@ -15,21 +14,16 @@ namespace MercadonaStudi.Controllers
             _context = context;
         }
 
-        // Equivalent Index() en async
-        //public async Task<IActionResult> IndexAsync()
-        //{
-        //    var data = await _context.Offers.ToListAsync();
-        //    return View();
-        //}
 
         
         // GET: Offers
         public IActionResult Index()
         {
-            var data = _context.Offers.ToList();
+            var offerList = _context.Offers.ToList();
 
-            return View(data);
+            return View(offerList);
         }
+
 
 
         // GET: Offers/Create
@@ -40,71 +34,76 @@ namespace MercadonaStudi.Controllers
 
         // POST: Offers/Create
         [HttpPost]
-        public IActionResult Create([Bind("StartDate, EndDate, Percentage")] Offer offer)
+        public IActionResult Create([Bind("StartDate, EndDate, Percentage")] Offer offerToCreate)
         {
             if (!ModelState.IsValid)
             {
-                return View(offer);
+                return View(offerToCreate);
             }
-            _context.Offers.Add(offer);
+
+            _context.Offers.Add(offerToCreate);
             _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
 
 
         // GET: Offers/Edit/2
         public IActionResult Edit(int id)
         {
-            var data = _context.Offers.Find(id);
+            var offerToUpdate = _context.Offers.Find(id);
 
-            if(data == null)
+            if(offerToUpdate == null)
             {
                 return View("NotFound");
             }
 
-            return View(data);
+            return View(offerToUpdate);
         }
 
         // POST: Offers/Edit/2
         [HttpPost]
-        public IActionResult Edit(int id, [Bind("Id, StartDate, EndDate, Percentage")] Offer offer)
+        public IActionResult Edit([Bind("Id, StartDate, EndDate, Percentage")] Offer offerToUpdate)
         {
             if (!ModelState.IsValid)
             {
-                return View(offer);
+                return View(offerToUpdate);
             }
 
-            _context.Offers.Update(offer);
+            _context.Offers.Update(offerToUpdate);
             _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
 
 
         // GET: Offers/Delete/2
         public IActionResult Delete(int id)
         {
-            var data = _context.Offers.Find(id);
+            var offerToDelete = _context.Offers.Find(id);
 
-            if (data == null)
+            if (offerToDelete == null)
             {
                 return View("NotFound");
             }
 
-            return View(data);
+            return View(offerToDelete);
         }
 
         // POST: Offers/Delete/2
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var data = _context.Offers.Find(id);
+            var offerToDelete = _context.Offers.Find(id);
 
-            if (data == null)
+            if (offerToDelete == null)
             {
                 return View("NotFound");
             }
 
-            _context.Offers.Remove(data);
+            _context.Offers.Remove(offerToDelete);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

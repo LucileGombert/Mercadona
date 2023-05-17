@@ -26,7 +26,6 @@
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
-        
 
         <div class="form-group p-2">
             <label asp-for="Description" class="control-label"></label>
@@ -55,7 +54,6 @@
 
             <div class="form-group p-2">
                 <label asp-for="OfferId" class="control-label"></label>
-                @*<input asp-for="OfferId" type="text" class="form-control" />*@
                 <select asp-for="OfferId" asp-items="ViewBag.Offers" class="form-select"></select>
             </div>
         </div>
