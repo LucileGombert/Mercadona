@@ -9,15 +9,16 @@
     <h1>Catalogue</h1>
 
     <div class="search-bar">
-        <form asp-controller="Home" asp-action="Index" method="post" class="d-flex justify-content-around align-content-end">
+        <form asp-controller="Home" asp-action="Index" method="post" class="d-flex justify-content-around align-items-center">
             <div class="form-group p-2">
-                <label asp-for="Category.Id" class="control-label">Catégorie</label>
+                <label asp-for="Category.Id" class="control-label" hidden></label>
                 <select asp-for="Category.Id" asp-items="ViewBag.Categories" class="form-select">
-                    <option selected class="fw-light text-body-secondary">Sélectionner une catégorie </option>
+                    @*<option selected class="fw-light text-body-secondary">Sélectionner une catégorie </option>*@
+                    <option selected>Tout voir </option>
                 </select>
-                <span asp-validation-for="Category.Id" class="text-danger"></span>
+                
             </div>
-            <div class="form-group mt-4 p-2">
+            <div class="form-group p-2">
                 <button id="input-container">
                     <i class="bi bi-funnel"></i>
                     <input type="submit" value="Filtrer">

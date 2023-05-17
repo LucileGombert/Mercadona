@@ -4,6 +4,7 @@ using MercadonaStudi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace MercadonaStudi.Controllers
@@ -12,6 +13,7 @@ namespace MercadonaStudi.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _context;
+        private HomeViewModel newHomeViewModel;
 
         public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
@@ -22,17 +24,17 @@ namespace MercadonaStudi.Controllers
         public IActionResult Index()
         {
             //var data = _context.Products.Include(p => p.Category).Include(p => p.Offer).ToList();
-            var model = new HomeViewModel()
+            var newHomeViewModel = new HomeViewModel()
             {
                 Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
                 Offers = _context.Offers.OrderBy(n => n.Percentage).ToList(),
                 Products = _context.Products.Include(p => p.Category).Include(p => p.Offer).ToList()
             };
 
-            ViewBag.Categories = new SelectList(model.Categories, "Id", "Label");
-            ViewBag.Offers = new SelectList(model.Offers, "Id", "Percentage");
+            ViewBag.Categories = new SelectList(newHomeViewModel.Categories, "Id", "Label");
+            ViewBag.Offers = new SelectList(newHomeViewModel.Offers, "Id", "Percentage");
 
-            return View(model);
+            return View(newHomeViewModel);
         }
 
         [HttpPost]
@@ -40,19 +42,31 @@ namespace MercadonaStudi.Controllers
         {
             var selectedCategory = model.Category.Id;
 
-            var list = new HomeViewModel()
+            if(selectedCategory == 0)
             {
-                Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
-                Offers = _context.Offers.OrderBy(n => n.Percentage).ToList(),
-                Products = _context.Products.Include(p => p.Category).Include(p => p.Offer).Where(x => x.CategoryId == selectedCategory).ToList()
-            };
+                newHomeViewModel = new HomeViewModel()
+                {
+                    Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
+                    Offers = _context.Offers.OrderBy(n => n.Percentage).ToList(),
+                    Products = _context.Products.Include(p => p.Category).Include(p => p.Offer).ToList()
+                };
+            } 
+            else
+            {
+                newHomeViewModel = new HomeViewModel()
+                {
+                    Categories = _context.Categories.OrderBy(n => n.Label).ToList(),
+                    Offers = _context.Offers.OrderBy(n => n.Percentage).ToList(),
+                    Products = _context.Products.Include(p => p.Category).Include(p => p.Offer).Where(x => x.CategoryId == selectedCategory).ToList()
+                };
+            }
 
-            ViewBag.Categories = new SelectList(model.Categories, "Id", "Label");
-            ViewBag.Offers = new SelectList(model.Offers, "Id", "Percentage");
+            ViewBag.Categories = new SelectList(newHomeViewModel.Categories, "Id", "Label");
+            ViewBag.Offers = new SelectList(newHomeViewModel.Offers, "Id", "Percentage");
             //var selectedCategory = model.Category.Id;
             //var filteredProducts = _context.Products.Where(x => x.CategoryId == selectedCategory).ToList();
             //return RedirectToAction("Index", "Home");
-            return View(list);
+            return View(newHomeViewModel);
         }
 
 
