@@ -16,3 +16,42 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#input-container {
+    position: relative;
+    max-width: 6rem;
+    height: 2.3rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #198754;
+    border-radius: 0.25rem;
+    color: #198754;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#input-container:hover {
+    position: relative;
+    cursor: pointer;
+    background-color: #198754;
+    border: 1px solid #198754;
+    border-radius: 0.25rem;
+    color: white;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#input-container > i {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+}
+
+#input-container > input {
+    padding-left: 30px;
+    background-color: transparent;
+    color: #198754;
+    border: none;
+}
+
+#input-container > input:hover {
+    color: white !important;
+}

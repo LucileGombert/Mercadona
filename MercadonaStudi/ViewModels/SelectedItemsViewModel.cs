@@ -8,6 +8,7 @@ namespace MercadonaStudi.ViewModels
         {
             Categories = new List<Category>();
             Offers = new List<Offer>();
+
         }
 
         public List<Category> Categories { get; set; }

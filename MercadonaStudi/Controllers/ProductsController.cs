@@ -28,7 +28,6 @@ namespace MercadonaStudi.Controllers
         }
 
 
-
         // GET: Products/Create
         public IActionResult Create()
         {

@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Product>
-
+﻿@*@model IEnumerable<Product>*@
+@*@model Product*@
+@model MercadonaStudi.ViewModels.HomeViewModel
 @{
     ViewData["Title"] = "Catalogue";
 }
@@ -7,22 +8,43 @@
 <div class="mt-5 mb-5 d-flex flex-row justify-content-between">
     <h1>Catalogue</h1>
 
-    <div class="search-bar d-inline-flex align-items-center ">
+    <div class="search-bar">
+        <form asp-controller="Home" asp-action="Index" method="post" class="d-flex justify-content-around align-content-end">
+            <div class="form-group p-2">
+                <label asp-for="Category.Id" class="control-label">Catégorie</label>
+                <select asp-for="Category.Id" asp-items="ViewBag.Categories" class="form-select">
+                    <option selected class="fw-light text-body-secondary">Sélectionner une catégorie </option>
+                </select>
+                <span asp-validation-for="Category.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4 p-2">
+                <button id="input-container">
+                    <i class="bi bi-funnel"></i>
+                    <input type="submit" value="Filtrer">
+                </button>
+            </div>
+            
+            @*<div id="input-container" class="form-group d-inline-flex btn btn-outline-success input_hover_white">
+            <i class="bi bi-funnel me-1"></i>
+            <input type="submit" value="Filtrer" class="bi bi-funnel border-0 bg-transparent btn-outline-success input_hover_white">
+            </div>*@
+        </form>
+
        @* <form method="get" asp-action="Index">
             <label class="w-40">Catégorie</label>
             <input type="text" name="term" placeholder="rechercher ...">
             <button type="submit"><i class="fa fa-search"></i></button>
             <a class="btn btn-default" href="/Home/Index">Tout voir</a>
         </form>*@
-        <div class="me-auto p-2"><i class="bi bi-funnel"></i></div>
+        
 
-        <select class="form-select" aria-label="Default select example">
+        @*<select class="form-select" aria-label="Default select example">
             <option asp-controller="Home" asp-action="Index" selected>Tout voir</option>
             @foreach (var item in Model)
             {
                 <option asp-for="Category">@item.Category.Label</option>
             }
-        </select>
+        </select>*@
         @*<div class="form-group p-2">
             <label asp-for="Category.Label" class="control-label"></label>
             @*<input asp-for="Category.Label" type="text" class="form-control">
@@ -31,12 +53,38 @@
             </select>
             <span asp-validation-for="Category.Label" class="text-danger"></span>
         </div>*@
+
+
+        @*@if (Model != null && Model.Categories.Any())
+        {*@
+            @*foreach (var category in Model.Categories)
+            {
+                <li>
+
+                    <a class="dropdown-item" asp-area="" asp-controller="Products" asp-action="List" asp-route-id="@category.Id">
+
+                        @category.Label
+
+                    </a>
+
+                </li>
+            }*@
+        @*}*@
+        
+
+        @*<div class="form-group p-2">
+            <label asp-for="Category.Id" class="control-label">Catégorie</label>
+            <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-select">
+                <option selected class="fw-light text-body-secondary">Sélectionner une catégorie </option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>*@
     </div>
 </div>
 
 
 <div class="mt-5 mb-3 row row-cols-1 row-cols-md-4 g-4 justify-content-center">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Products)
     {
         <div class="col">
             <div class="card">
