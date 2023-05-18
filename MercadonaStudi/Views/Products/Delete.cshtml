@@ -6,7 +6,10 @@
 }
 
 <div class="container-fluid container-md">
-    <h1 class="pb-10">Suppression</h1>
+    <div class="d-flex border-start border-bottom border-success-subtle ps-2 pt-0">
+        <span class="border-start border-success pt-2 p-0"></span>
+        <h1 class="border-bottom border-success p-1">Suppression</h1>
+    </div>
 
     <form asp-action="Delete" method="post" class="mt-5 col-md-10 offset-md-1">
         <input type="hidden" asp-for="Id"/>
@@ -61,7 +64,7 @@
         </div>
         
         <div class="form-group mt-5 d-flex justify-content-evenly">
-            <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary">Retour</a>
+            <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Supprimer</button>
         </div>
 

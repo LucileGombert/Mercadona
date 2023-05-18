@@ -6,11 +6,14 @@
 }
 
 <div class="container-fluid container-md">
-    <div class="mt-5 mb-5 d-flex flex-row justify-content-between align-items-center">
-        <a asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left-circle" style="font-size: 1.5rem; color: green"></i></a>
-        
-        <h1 class="me-auto p-2">Promotions</h1>
-        
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>
+
+    <div class="mt-5 mb-5 d-flex justify-content-evenly flex-wrap align-items-center">
+        <div class="d-flex border-start border-bottom border-success-subtle ps-2 pt-0">
+            <span class="border-start border-success pt-2 p-0"></span>
+            <h1 class="border-bottom border-success p-1">Promotions</h1>
+        </div>
+
         <div>
             <a asp-controller="Offers" asp-action="Create" class="btn btn-outline-success"><i class="bi bi-plus-circle"></i> Ajouter une promotion</a>
         </div>
