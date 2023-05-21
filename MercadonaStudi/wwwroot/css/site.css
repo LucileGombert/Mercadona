@@ -55,3 +55,7 @@ body {
 #input-container > input:hover {
     color: white !important;
 }
+
+.img {
+    object-fit: cover;
+}

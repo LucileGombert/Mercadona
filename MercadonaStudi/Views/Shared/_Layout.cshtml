@@ -72,12 +72,12 @@
             <div class="container">
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <p>&copy; 2023 - Mercadona - <a href="~/files/GuideAdmin.pdf" target="_blank">Guide d'utilisation</a></p>
+                <p>&copy; 2023 - Mercadona - <a href="~/files/GUIDE UTILISATEUR ADMIN.pdf" target="_blank"><i class="bi bi-journal-bookmark"></i> Guide d'utilisation</a> - <a href="~/files/Doc technique.pdf" target="_blank"><i class="bi bi-journal-text"></i> Documentation technique</a></p>
 
                 }
                 else
                 {
-                <p>&copy; 2023 - Mercadona - <a href="~/files/Guide.pdf" target="_blank"><i class="bi bi-journal-bookmark"></i> Guide d'utilisation</a></p>
+                <p>&copy; 2023 - Mercadona - <a href="~/files/GUIDE UTILISATEUR.pdf" target="_blank"><i class="bi bi-journal-bookmark"></i> Guide d'utilisation</a></p>
                 }
             </div>
         </footer>

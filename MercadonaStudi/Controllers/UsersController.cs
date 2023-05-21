@@ -57,10 +57,7 @@ namespace MercadonaStudi.Controllers
             return View(loginViewModel);
         }
 
-        public IActionResult Profile()
-        {
-            return View();
-        }
+
 
         public async Task<IActionResult> Logout()
         {
