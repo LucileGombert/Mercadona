@@ -23,6 +23,7 @@ namespace MercadonaStudi.Controllers
             return View(new LoginViewModel());
         }
 
+        // POST: Users/Login
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
