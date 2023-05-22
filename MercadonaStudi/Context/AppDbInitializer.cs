@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MercadonaStudi.Models;
+using static System.Net.WebRequestMethods;
 
 
 namespace MercadonaStudi.Context
@@ -62,7 +63,7 @@ namespace MercadonaStudi.Context
                         {
                             Title = "Pommes",
                             Description = "Pommes origine France",
-                            Image = "https://images.pexels.com/photos/2966150/pexels-photo-2966150.jpeg",
+                            Image = "https://images.pexels.com/photos/7333159/pexels-photo-7333159.jpeg",
                             Price = 5,
                             DiscountedPrice = 0,
                             CategoryId = 1,

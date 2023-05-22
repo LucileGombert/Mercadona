@@ -5,8 +5,10 @@
     Layout = "_Layout";
 }
 
-<div class="container-fluid container-md">
-    <div class="d-flex border-start border-bottom border-success-subtle ps-2 pt-0">
+<div class="container-fluid container-md mb-5">
+    <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>
+
+    <div class="d-flex border-start border-bottom border-success-subtle ps-2 pt-0 mt-5">
         <span class="border-start border-success pt-2 p-0"></span>
         <h1 class="border-bottom border-success p-1">Modification</h1>
     </div>
@@ -44,7 +46,7 @@
 
             <div class="form-group p-2 flex-grow-1">
                 <label class="control-label">Aperçu</label>
-                <img id="ImagePreview" class="form-control" style="max-width: 350px"/>
+                <img id="ImagePreview" class="form-control" style="max-width: 350px; max-height: 400px"/>
             </div>
         </div>
 
@@ -63,7 +65,7 @@
         
 
         <div class="form-group mt-5 d-flex justify-content-evenly">
-            <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>
+            @*<a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>*@
             <input type="submit" value="Enregistrer" class="btn btn-outline-success">
         </div>
     </form>

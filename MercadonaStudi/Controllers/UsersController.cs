@@ -24,6 +24,7 @@ namespace MercadonaStudi.Controllers
             return View(new LoginViewModel());
         }
 
+        // POST: Users/Login
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
@@ -58,10 +59,7 @@ namespace MercadonaStudi.Controllers
             return View(loginViewModel);
         }
 
-        public IActionResult Profile()
-        {
-            return View();
-        }
+
 
         [Authorize]
         public async Task<IActionResult> Logout()

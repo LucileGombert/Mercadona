@@ -5,8 +5,10 @@
     Layout = "_Layout";
 }
 
-<div class="container-fluid container-md">
-    <div class="d-flex border-start border-bottom border-success-subtle ps-2 pt-0">
+<div class="container-fluid container-md mb-5">
+    <a asp-controller="Offers" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>
+
+    <div class="d-flex border-start border-bottom border-success-subtle ps-2 pt-0 mt-5">
         <span class="border-start border-success pt-2 p-0"></span>
         <h1 class="border-bottom border-success p-1">Nouvelle promotion</h1>
     </div>
@@ -33,7 +35,6 @@
         </div>
 
         <div class="form-group mt-5 d-flex justify-content-evenly">
-            <a asp-controller="Offers" asp-action="Index" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle"></i> Retour</a>
             <input type="submit" value="Enregistrer" class="btn btn-outline-success">
         </div>
     </form>
