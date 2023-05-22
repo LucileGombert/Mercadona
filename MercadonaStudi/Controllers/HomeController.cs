@@ -68,7 +68,7 @@ namespace MercadonaStudi.Controllers
 
             ViewBag.Categories = new SelectList(productList.Categories, "Id", "Label");
             ViewBag.Offers = new SelectList(productList.Offers, "Id", "Percentage");
-
+            Console.WriteLine(productList);
             return View(productList);
         }
 

@@ -1,9 +1,11 @@
 ﻿using MercadonaStudi.Context;
 using MercadonaStudi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MercadonaStudi.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly AppDbContext _context;

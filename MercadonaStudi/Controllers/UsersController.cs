@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using MercadonaStudi.Models;
 using MercadonaStudi.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MercadonaStudi.Controllers
 {
@@ -62,6 +63,7 @@ namespace MercadonaStudi.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

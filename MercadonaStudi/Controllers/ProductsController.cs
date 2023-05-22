@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using MercadonaStudi.Context;
 using MercadonaStudi.Models;
 using MercadonaStudi.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MercadonaStudi.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly AppDbContext _context;

@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 
 // Context
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("AZURE_POSTGRESQL_CONNECTIONSTRING")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Identity  
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()

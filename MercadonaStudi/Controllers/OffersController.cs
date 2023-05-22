@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MercadonaStudi.Context;
 using MercadonaStudi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MercadonaStudi.Controllers
 {
+    [Authorize]
     public class OffersController : Controller
     {
         private readonly AppDbContext _context;
@@ -34,7 +36,7 @@ namespace MercadonaStudi.Controllers
 
         // POST: Offers/Create
         [HttpPost]
-        public IActionResult Create([Bind("StartDate, EndDate, Percentage")] Offer offerToCreate)
+        public IActionResult Create([Bind("StartDate, StartDate, Percentage")] Offer offerToCreate)
         {
             if (!ModelState.IsValid)
             {
