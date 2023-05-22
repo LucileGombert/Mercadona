@@ -21,9 +21,9 @@ Mercadona est une application permettant à ses utilisateurs de consulter les pr
 <br>▹ Npgsql.EntityFrameworkCore.PostgreSQL.Design V1.1.0
 
 ⇢ Prérequis :
-<br>.NET 6.0 doit être installé au préalable sur votre machine.
+<br>▹ .NET 6.0 doit être installé au préalable sur votre machine.
 <br>Lien de téléchargement : https://dotnet.microsoft.com/en-us/download
-<br>PostgreSQL doit également être installé.
+<br>▹ PostgreSQL doit également être installé.
 <br>Liens de téléchargement : https://www.postgresql.org/download/
 <br>
 
