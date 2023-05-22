@@ -6,7 +6,7 @@ Mercadona
 ====================================================
 
 ⇢ Présentation :
-Mercadona est une application permettant à ses utilisateurs de consulter les produits et offres promotionnelles proposés par l'enseigne.
+<br> Mercadona est une application permettant à ses utilisateurs de consulter les produits et offres promotionnelles proposés par l'enseigne.
 
 ⇢ Technologies utilisées :
 <br>▹ ASP.NET 6.0
@@ -22,9 +22,9 @@ Mercadona est une application permettant à ses utilisateurs de consulter les pr
 
 ⇢ Prérequis :
 <br>▹ .NET 6.0 doit être installé au préalable sur votre machine.
-<br>Lien de téléchargement : https://dotnet.microsoft.com/en-us/download
+<br> Lien de téléchargement : https://dotnet.microsoft.com/en-us/download
 <br>▹ PostgreSQL doit également être installé.
-<br>Liens de téléchargement : https://www.postgresql.org/download/
+<br> Liens de téléchargement : https://www.postgresql.org/download/
 <br>
 
 ⇢ Installation :
@@ -35,7 +35,8 @@ Mercadona est une application permettant à ses utilisateurs de consulter les pr
 <br>
 
 <br>Base de données :
-<br>▹ Vérifier que les informations contenues dans le fichier config.json sont correctes et correspondent à votre base de données
+<br>▹ Lancez l'applicatif pgAdmin 4 et créez une nouvelle base de données ;
+<br>▹ Vérifiez que les informations contenues dans le fichier config.json sont correctes et correspondent à votre base de données ;
 <br>▹ Rendez-vous dans la Console du Gestionnaire de package ;
 <br>▹ Exécutez `add-migration InitialMigrationodel:create --attributes "username:string email:string password:string" --name User` pour créer la première migration ;
 <br>▹ Exécutez `update-database` afin d'enregistrer les modèles créés dans la base de données ;
