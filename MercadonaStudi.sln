@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MercadonaStudi", "MercadonaStudi\MercadonaStudi.csproj", "{EF1D539C-55DD-4621-952D-8C1BA3D0C282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercadonaStudiTests", "MercadonaStudiTests\MercadonaStudiTests.csproj", "{80F6F5CE-7DDB-4248-ABDC-B4EABF8B5711}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercadonaStudi.Test", "MercadonaStudiTests\MercadonaStudi.Test.csproj", "{80F6F5CE-7DDB-4248-ABDC-B4EABF8B5711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
