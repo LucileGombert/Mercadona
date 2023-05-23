@@ -53,3 +53,13 @@ Mercadona
 <br>Les identifiants de connexion du compte administrateur sont les suivants :
 <br>▹ Email : admin@gmail.com
 <br>▹ Mot de passe : Admin@123
+
+
+⇢ Liens utiles : 
+<br>▹ Déploiement : https://mercadona-docker.herokuapp.com/ <> https://mercadona-studi.herokuapp.com/ <> https://mercadonastudi.azurewebsites.net/ 
+<br>▹ Trello : https://trello.com/b/IkEwbeuH/mercadona 
+<br>▹ MCD : https://github.com/LucileGombert/Mercadona/blob/master/Annex/MCD%20MERCADONA.pdf 
+<br>▹ Documentation technique : https://github.com/LucileGombert/Mercadona/blob/master/Annex/DOCUMENTATION%20TECHNIQUE.pdf 
+<br>▹ Guide d’utilisation : https://github.com/LucileGombert/Mercadona/blob/master/Annex/GUIDE%20UTILISATEUR.pdf 
+<br>▹ Guide d’utilisation administrateur : https://github.com/LucileGombert/Mercadona/blob/master/Annex/GUIDE%20UTILISATEUR%20ADMIN.pdf 
+
