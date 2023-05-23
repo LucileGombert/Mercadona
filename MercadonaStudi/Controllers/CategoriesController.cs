@@ -2,7 +2,6 @@
 using MercadonaStudi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MercadonaStudi.Controllers
 {
@@ -19,12 +18,16 @@ namespace MercadonaStudi.Controllers
             _context = context;
         }
 
+
+
         public List<Category> GetAllCategories()
         {
             var categories = _context.Categories.ToList();
 
             return categories;
         }
+
+
 
         // GET: Categories
         public IActionResult Index()
