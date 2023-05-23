@@ -48,8 +48,8 @@ Mercadona
 <br>▹ Exécutez `update-database` afin d'enregistrer les modèles créés dans la base de données ;
 <br>
 
+
 ⇢  !! Info !!
-<br>
 <br>Les identifiants de connexion du compte administrateur sont les suivants :
 <br>▹ Email : admin@gmail.com
 <br>▹ Mot de passe : Admin@123
