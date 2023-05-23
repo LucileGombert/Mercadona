@@ -20,7 +20,6 @@ Mercadona
 <br>▹ Npgsql.EntityFrameworkCore.PostgreSQL V7.0.4
 <br>▹ Npgsql.EntityFrameworkCore.PostgreSQL.Design V1.1.0
 <br>
-
 <br>Projet MercadonaStudi.Test :
 <br>▹ Microsoft.EntityFrameworkCore V7.0.5
 <br>▹ Microsoft.EntityFrameworkCore.Sqlite V7.0.5
@@ -42,7 +41,6 @@ Mercadona
 <br>▹ Clonez ce repository ;
 <br>▹ Le serveur doit fonctionner sur `localhost` avec le port par défaut `7000` ;
 <br>
-
 <br>Base de données :
 <br>▹ Lancez l'applicatif pgAdmin 4 et créez une nouvelle base de données ;
 <br>▹ Rendez-vous dans la Console du Gestionnaire de package ;
@@ -50,7 +48,7 @@ Mercadona
 <br>▹ Exécutez `update-database` afin d'enregistrer les modèles créés dans la base de données ;
 <br>
 
-<br>!! Info !!
+⇢  !! Info !!
 <br>
 <br>Les identifiants de connexion du compte administrateur sont les suivants :
 <br>▹ Email : admin@gmail.com
